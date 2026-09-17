@@ -574,8 +574,8 @@ console.log(realtorFees(listings[0]));
 
 const listingAscendingly = listings.sort(
   (listingA, listingB) =>
-    parseInt(listingA.price.replace("$", "").replace(",", "")) -
-    parseInt(listingB.price.replace("$", "").replace(",", "")),
+    parseInt(listingA.propertySummary.builtIn) -
+    parseInt(listingB.propertySummary.builtIn),
 );
 console.log(listingAscendingly);
 
