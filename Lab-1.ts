@@ -3,6 +3,39 @@
 //Create an interface Listing that will represent an object
 //from the listings array below to resolve the type error.
 
+interface Listing {
+  id: string;
+  price: string;
+  address: string;
+  postalCode: string;
+  MLSnumber: string;
+  photo: string;
+  description: string;
+  propertySummary: {
+    propertyType: string;
+    buildingType: string;
+    storeys: string;
+    title: string;
+    builtIn: string;
+    taxes: string;
+    parking: string;
+  };
+  buildingSummary: {
+    bedrooms: string;
+    bathrooms: string;
+    buildingFeatures: string[];
+    cooling: string;
+    heating: string;
+    sewer: string;
+    water: string;
+    size: string;
+  };
+  isSold?: boolean;
+  currentOwner?: string;
+}
+
+///
+
 const listings: Listing[] = [
   {
     id: "10100",
@@ -481,6 +514,7 @@ const listings: Listing[] = [
  * from the array above
  */
 //WRITE YOUR CODE BELOW
+let listing0: Listing = listings[0];
 
 /**
  * Task-3:
@@ -494,6 +528,12 @@ const listings: Listing[] = [
  * Make sure to add them as OPTIONAL properties
  */
 //WRITE YOUR CODE BELOW
+let listing0Updated: Listing = {
+  ...listing0,
+  isSold: false,
+  currentOwner: "Jane Doe",
+};
+console.log(listing0Updated);
 
 /**
  * NOTE: THIS TASK IS TRICKY!
@@ -512,12 +552,32 @@ const listings: Listing[] = [
  */
 //WRITE YOUR CODE BELOW
 
+function realtorFees(listings: Listing) {
+  let price = parseInt(listings.price.replace("$", "").replace(",", ""));
+  let fee;
+  console.log(price);
+  if (price > 450000) {
+    fee = price * 0.02;
+  } else {
+    fee = price * 0.025;
+  }
+  return fee;
+}
+console.log(realtorFees(listings[0]));
+
 /**
  * Task-5:
  * Sort the listing array ascendingly in a new variable called listingAscendingly
  * according to their built year
  */
 //WRITE YOUR CODE BELOW
+
+const listingAscendingly = listings.sort(
+  (listingA, listingB) =>
+    parseInt(listingA.price.replace("$", "").replace(",", "")) -
+    parseInt(listingB.price.replace("$", "").replace(",", "")),
+);
+console.log(listingAscendingly);
 
 /**
  * Task-6:
@@ -527,3 +587,7 @@ const listings: Listing[] = [
  * This array should result in two listings only
  */
 //WRITE YOUR CODE BELOW
+const townhouseListings = listings.filter((listing) =>
+  listing.propertySummary.buildingType.includes("Townhouse"),
+);
+console.log(townhouseListings);
