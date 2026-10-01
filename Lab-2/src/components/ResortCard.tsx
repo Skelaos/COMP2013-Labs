@@ -14,7 +14,9 @@ export default function ResortCard({
       <p>
         <i>{location}</i>
       </p>
-      <p style={{ color: rating > 4.0 ? "green" : "red" }}>★{rating}</p>
+      <p style={rating > 4.0 ? { color: "green" } : { color: "red" }}>
+        ★{rating}
+      </p>
       <p>${price}/night</p>
     </div>
   );
