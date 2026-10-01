@@ -7,10 +7,6 @@ export default function ResortCard({
   rating,
   price,
 }: ResortListing) {
-  let ratingColor = "green";
-  if (rating < 4) {
-    ratingColor = "red";
-  }
   return (
     <div className="ResortCard">
       <img src={pic} width="150px"></img>
@@ -18,7 +14,7 @@ export default function ResortCard({
       <p>
         <i>{location}</i>
       </p>
-      <p style={{ color: ratingColor }}>★{rating}</p>
+      <p style={{ color: rating > 4.0 ? "green" : "red" }}>★{rating}</p>
       <p>${price}/night</p>
     </div>
   );
