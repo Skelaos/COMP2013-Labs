@@ -4,18 +4,21 @@
 
 .ResortCard {
   width: 200px;
+  text-align: left;
   padding: 10px;
-  margin: 0 10px;
+}
+
+h2 {
+  font-size: large;
 }
 
 .ResortContainer {
   display: flex;
   justify-content: space-around;
-  padding: 10px;
-  margin: 10px;
+  padding: 20px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .ResortContainer {
     flex-direction: column;
   }
